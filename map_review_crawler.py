@@ -44,6 +44,8 @@ def get_nid(place_id):
         except:
             logger.exception('Error occured while getting nid of place.')
             return
+    except:
+        return
     return nid
 
 def get_places(keyword, language='zh-TW', region=None, radius=None):
