@@ -2,6 +2,9 @@ import argparse
 import configparser
 import logging
 import re
+import time
+
+from random import random
 
 import googlemaps
 import pymongo
@@ -63,6 +66,7 @@ def get_places(keyword, language='zh-TW', region=None, radius=None):
         if parsed_data['nid']:
             place_data.append(parsed_data)
             logger.info(f"Got Place Info. Name: {parsed_data['name']}, Place Id: {parsed_data['place_id']}")
+            time.sleep(random() * 5)
 
 
     if place_data:
@@ -100,6 +104,7 @@ def get_reviews(nid, max=200, start=0, limit=100):
 
             count += len(reviews_raw)
             start += limit
+            time.sleep(random() * 3)
 
         else:
             logger.warning(f'Something wrong while crawling reviews on {place_name} (status code: {res.status_code}).')
