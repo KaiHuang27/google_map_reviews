@@ -1,0 +1,25 @@
+version: '3'
+  
+services:
+  db:
+      image: mongo:4.4.5
+      ports:
+        - "27017:27017"
+  model:
+    build: .
+    command: bash -c "python ofelia/jobs.py"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+    environment:
+      MONGODB_URL: "mongodb://db:27017"
+  ofelia:
+    image: mcuadros/ofelia:latest
+    depends_on: 
+      - db
+      - model
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./ofelia/config.ini:/etc/ofelia/config.ini
+      - ./ofelia/logs:/var/log

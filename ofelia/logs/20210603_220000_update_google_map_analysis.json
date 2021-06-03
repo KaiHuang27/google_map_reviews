@@ -1,0 +1,31 @@
+{
+  "Execution": {
+    "ID": "d441bf67a4d2",
+    "Date": "2021-06-03T22:00:00.0445991Z",
+    "Duration": 28148200,
+    "IsRunning": false,
+    "Failed": true,
+    "Skipped": false,
+    "Error": {}
+  },
+  "Job": {
+    "Schedule": "0 0 * * * *",
+    "Name": "update_google_map_analysis",
+    "Command": "python ./ofelia/jobs.py update_google_map_reviews",
+    "Container": "model",
+    "User": "root",
+    "TTY": false,
+    "NoOverlap": false,
+    "SlackWebhook": "",
+    "SlackOnlyOnError": false,
+    "SaveFolder": "/var/log",
+    "SaveOnlyOnError": false,
+    "SMTPHost": "",
+    "SMTPPort": 0,
+    "SMTPUser": "",
+    "SMTPPassword": "",
+    "EmailTo": "",
+    "EmailFrom": "",
+    "MailOnlyOnError": false
+  }
+}
